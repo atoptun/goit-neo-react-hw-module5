@@ -1,0 +1,8 @@
+.spinner {
+  display: block !important;
+  margin: 20px auto;
+
+  border-color: darkblue !important;
+  border-top-color: red !important;
+  border-style: solid !important;
+}

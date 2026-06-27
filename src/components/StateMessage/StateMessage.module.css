@@ -1,0 +1,13 @@
+.stateMessage {
+  text-align: center;
+  font-size: 1.5rem;
+  color: #555;
+  margin-top: 20px;
+}
+
+@media (max-width: 480px) {
+  .stateMessage {
+    font-size: 1.2rem;
+    margin-top: 15px;
+  }
+}

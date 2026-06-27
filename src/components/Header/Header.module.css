@@ -1,0 +1,18 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 20px 0;
+  background-color: darkblue;
+}
+
+@media screen and (max-width: 768px) {
+  .header {
+    /* padding: 10px 0; */
+  }
+}
