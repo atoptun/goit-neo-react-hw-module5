@@ -2,8 +2,9 @@ import styles from './StateMessage.module.css';
 
 const stateMessages = {
   start: 'Please enter a search query...',
-  'no-images': 'No images found for this query...<br>Please, try another one.',
   'fetch-error': 'Whoops, something went wrong...<br>Please, try again later.',
+  'nothing-found':
+    'No movies found for this query...<br>Please, try another one.',
 };
 
 function StateMessage({ state }) {

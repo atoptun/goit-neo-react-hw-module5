@@ -1,4 +1,3 @@
-// import { useState } from 'react';
 import clsx from 'clsx';
 import { Field, Form, Formik } from 'formik';
 import { useState } from 'react';
@@ -7,19 +6,28 @@ import { FiSliders } from 'react-icons/fi';
 
 import styles from './SearchBar.module.css';
 
-const initialsValues = {
+const defaultValues = {
   query: '',
-  color: '',
-  orientation: '',
-  order_by: 'relevant',
+  language: '',
+  primary_release_year: '',
+  include_adult: false,
 };
 
-function SearchBar({ isLoading, onSearch }) {
+const langs = [
+  { value: '', label: 'All Languages' },
+  { value: 'en-US', label: 'English (US)' },
+  { value: 'uk-UA', label: 'Ukrainian (Ukraine)' },
+  { value: 'es-ES', label: 'Spanish (Spain)' },
+  { value: 'fr-FR', label: 'French (France)' },
+  { value: 'de-DE', label: 'German (Germany)' },
+];
+
+function SearchBar({ values, isLoading, onSearch }) {
   const [isFilterOpen, setIsFilterOpen] = useState(false);
 
   const handleSubmit = values => {
-    const query = values.query.trim();
-    if (!query) {
+    values.query = values.query.trim();
+    if (!values.query) {
       toast.error('Please enter a search query');
       return;
     }
@@ -27,8 +35,13 @@ function SearchBar({ isLoading, onSearch }) {
     // actions.resetForm();
   };
 
+  const initValues = {
+    ...defaultValues,
+    ...values,
+  };
+
   return (
-    <Formik initialValues={initialsValues} onSubmit={handleSubmit}>
+    <Formik initialValues={initValues} onSubmit={handleSubmit}>
       <Form
         className={clsx(styles.searchForm, {
           [styles.filtersVisible]: isFilterOpen,
@@ -39,9 +52,9 @@ function SearchBar({ isLoading, onSearch }) {
             type="text"
             name="query"
             className={styles.searchInput}
-            placeholder="Search images..."
+            placeholder="Search query..."
             disabled={isLoading}
-            autoComplete="off"
+            // autoComplete="off"
             autoFocus
           />
 
@@ -58,46 +71,32 @@ function SearchBar({ isLoading, onSearch }) {
         </div>
 
         <Field
-          name="color"
+          name="language"
           as="select"
           className={styles.searchSelect}
           disabled={isLoading}
         >
-          <option value="">All Colors</option>
-          <option value="black_and_white">Black and White</option>
-          <option value="black">Black</option>
-          <option value="white">White</option>
-          <option value="yellow">Yellow</option>
-          <option value="orange">Orange</option>
-          <option value="red">Red</option>
-          <option value="purple">Purple</option>
-          <option value="magenta">Magenta</option>
-          <option value="green">Green</option>
-          <option value="teal">Teal</option>
-          <option value="blue">Blue</option>
+          {langs.map(lang => (
+            <option key={lang.value} value={lang.value}>
+              {lang.label}
+            </option>
+          ))}
         </Field>
 
         <Field
-          name="orientation"
-          as="select"
-          className={styles.searchSelect}
+          name="primary_release_year"
+          placeholder="Release year"
+          type="number"
+          className={styles.searchInput}
           disabled={isLoading}
-        >
-          <option value="">All Orientations</option>
-          <option value="landscape">Landscape</option>
-          <option value="portrait">Portrait</option>
-          <option value="squarish">Squarish</option>
-        </Field>
+        />
 
-        <Field
-          name="order_by"
-          as="select"
-          className={styles.searchSelect}
+        {/* <Field
+          name="include_adult"
+          type="checkbox"
+          className={styles.searchCheckbox}
           disabled={isLoading}
-        >
-          <option value="relevant">Relevant</option>
-          <option value="latest">Latest</option>
-        </Field>
+        /> */}
 
         <button type="submit" disabled={isLoading} className={styles.searchBtn}>
           Search

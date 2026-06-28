@@ -1,0 +1,11 @@
+.author {
+  font-weight: bold;
+}
+
+.date {
+  font-style: italic;
+}
+
+.content {
+  font-size: 1rem;
+}

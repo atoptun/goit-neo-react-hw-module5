@@ -1,0 +1,17 @@
+.goBackBtn {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #908f8f;
+  border-radius: 5px;
+  text-decoration: none;
+  color: #000;
+  font-weight: bold;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+
+  &:hover {
+    background-color: #333;
+    color: #fff;
+  }
+}

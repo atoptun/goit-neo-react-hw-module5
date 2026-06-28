@@ -1,6 +1,15 @@
+import Container from '../Container/Container';
+import Navigation from '../Navigation/Navigation';
 import styles from './Header.module.css';
 
-function Header({ children }) {
-  return <header className={styles.header}>{children}</header>;
+function Header() {
+  return (
+    <header className={styles.header}>
+      <Container>
+        <Navigation />
+      </Container>
+    </header>
+  );
 }
+
 export default Header;

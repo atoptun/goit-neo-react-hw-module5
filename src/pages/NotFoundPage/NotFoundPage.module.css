@@ -1,0 +1,12 @@
+._404 {
+  font-size: 4rem;
+  font-weight: bold;
+  color: darkcyan;
+  font-style: italic;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.link {
+  color: blue;
+  text-decoration: underline;
+}

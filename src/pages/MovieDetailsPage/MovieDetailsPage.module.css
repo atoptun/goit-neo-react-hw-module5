@@ -1,0 +1,16 @@
+.navList {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+  padding: 0;
+}
+
+.link {
+  font-size: 1.2rem;
+  text-decoration: none;
+  color: blue;
+}
+
+.activeLink {
+  text-decoration: underline;
+}
